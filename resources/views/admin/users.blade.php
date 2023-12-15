@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Users')
+@section('title')
+    {{ __('app.userConsole') }}
+@endsection
 @section('content')
     <div class="container">
         <div class="row">
@@ -42,8 +44,9 @@
                                     <span class="text-muted">10: 00 AM</span>
                                 </td>
                                 <td>
-                                    <a type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" href="{{ route('admin.users.edit', ['id' => $user['id']]) }}"><i class="bi bi-pencil-fill"></i></a>
-                                    <a type="button" class="btn btn-danger btn-circle btn-lg btn-circle ml-2" href="{{ route('admin.users.edit', ['id' => $user['id']]) }}"><i class="bi-x-octagon-fill"></i> </a>
+                                    <a type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" href="{{ route('admin.users.show', ['id' => $user['id']]) }}"><i class="bi bi-eye-fill"></i></a>
+                                    <a type="button" class="btn btn-outline-warning btn-circle btn-lg btn-circle ml-2" href="{{ route('admin.users.edit', ['id' => $user['id']]) }}"><i class="bi bi-pencil-fill"></i></a>
+                                    <a type="button" class="btn btn-danger btn-circle btn-lg btn-circle ml-2" href="{{ route('admin.users.index') }}" onclick="return alert('{{__('app.confirmation')}}')"><i class="bi-x-octagon-fill"></i> </a>
                                 </td>
                                 </tr>
                               @endforeach

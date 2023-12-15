@@ -31,16 +31,19 @@ Route::prefix('admin')->name('admin.')->group(function(){
 
     Route::prefix('users')->name('users.')->group(function (){
         Route::get('/', [AdminUserController::class, 'index'])->name('index');
-        Route::get('{id}/edit', [AdminUserController::class, 'edit'])->name('edit');
+        Route::get('{id}', [AdminUserController::class, 'show'])->name('show');
+        Route::get('{id}/editUser', [AdminUserController::class, 'edit'])->name('edit');
         Route::put('{id}', [AdminUserController::class, 'update'])->name('update');
     });
 
     Route::prefix('conferences')->name('conferences.')->group(function (){
         Route::get('/', [AdminConferenceController::class, 'index'])->name('index');
-        Route::get('{id}/edit', [AdminConferenceController::class, 'edit'])->name('edit');
-        Route::get('{conferenceId}', [AdminConferenceController::class, 'create'])->name('create');
-        Route::post('/', [AdminConferenceController::class, 'store'])->name('store');
+        Route::get('{id}', [AdminConferenceController::class, 'show'])->name('show');
+        Route::get('{id}/editConference', [AdminConferenceController::class, 'edit'])->name('edit');
+        Route::get('/createConference', [AdminConferenceController::class, 'create'])->name('create');
+        Route::post('{conferenceId}', [AdminConferenceController::class, 'store'])->name('store');
         Route::put('{id}', [AdminConferenceController::class, 'update'])->name('update');
+        Route::delete('{id}', [AdminConferenceController::class, 'destroy'])->name('destroy');
     });
 
 });

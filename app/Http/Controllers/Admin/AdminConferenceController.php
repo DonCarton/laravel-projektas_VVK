@@ -160,11 +160,7 @@ class AdminConferenceController extends Controller
      */
     public function store()
     {
-        var_dump(request('eventName'));
-        var_dump(request('location'));
-        var_dump(request('info'));
-        var_dump(request('eventDate'));
-        return redirect('/conferences');
+        //
     }
 
     /**
@@ -172,7 +168,8 @@ class AdminConferenceController extends Controller
      */
     public function show(string $id)
     {
-        //
+        abort_if(!isset($this->conferences[$id]), 404);
+        return view('admin.viewConference', ['conference' => $this->conferences[$id]]);
     }
 
     /**
@@ -180,7 +177,8 @@ class AdminConferenceController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        abort_if(!isset($this->conferences[$id]), 404);
+        return view('admin.editConference', ['conference' => $this->conferences[$id]]);
     }
 
     /**

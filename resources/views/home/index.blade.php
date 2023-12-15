@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Home Page')
+@section('title')
+    {{ __('app.home') }}
+@endsection
 @section('content')
     <div class="jumbotron text-center">
-        <h1>Welcome to {{ config('app.name', 'Laravel') }} home page.</h1>
+        <h1>{{ __('app.welcome') }}</h1>
     </div>
 @endsection

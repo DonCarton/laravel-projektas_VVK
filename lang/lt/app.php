@@ -28,7 +28,8 @@ return [
     'dataNotFound' => 'Nėra duomenų',
     'eventName' => 'Konferencijos pavadinimas',
     'eventUserCount' => 'Dalyvių skaičius',
-    'name' => 'Vardas',
+    'name' => 'Pavadinimas',
+    'firstName' => 'Vardas',
     'surname' => 'Pavardė',
     'email' => 'El. paštas',
     'userId' => 'Vartotojo ID',
@@ -36,5 +37,11 @@ return [
     'update' => 'Atnaujinti',
     'createNew' => 'Sukurti naują',
     'logout' => 'Atsijungti',
-
+    'submit' => 'Pateikti',
+    'saved' => 'Išsaugota',
+    'cancel' => 'Atšaukti',
+    'view' => 'Peržiūrėti',
+    'home' => 'Pagrindinis',
+    'welcome' => 'Sveik atvykę į pagrindinį puslapį!',
+    'confirmation' => 'Ar tikrai?'
 ];

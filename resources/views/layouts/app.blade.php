@@ -47,7 +47,8 @@
                             <a class="nav-link" href="{{ route('admin.users.index') }}">{{ __('app.userConsole') }}</a>
                         </li>
                         <li class="nav-item" >
-                            <a class="nav-link" href="{{ route('admin.users.index') }}" disabled="">{{ __('app.logout') }}</a>
+{{--                            <a type="button" class="nav-link" href="{{ route('admin.users.index') }}" disabled>{{ __('app.logout') }}</a>--}}
+                            <button class="nav-link" disabled>{{ __('app.logout') }}</button>
                         </li>
                     {{--@guest
                         @if (Route::has('login'))

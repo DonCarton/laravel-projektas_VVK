@@ -29,12 +29,19 @@ return [
     'eventName' => 'Event name',
     'eventUserCount' => 'Event user count',
     'name' => 'Name',
-    'surname' => 'Surname',
+    'firstName' => 'First name',
+    'surname' => 'Last name',
     'email' => 'Email',
     'userId' => 'User ID',
     'userType' => 'User Type',
     'update' => 'Update',
     'createNew' => 'Create a new',
     'logout' => 'Log out',
-
+    'submit' => 'Submit',
+    'saved' => 'Saved',
+    'cancel' => 'Cancel',
+    'view' => 'View',
+    'home' => 'Home',
+    'welcome' => 'Welcome to the home page!',
+    'confirmation' => 'Are you sure?'
 ];

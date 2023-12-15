@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Conferences')
-
+@section('title')
+    {{ __('app.conferenceConsole') }}
+@endsection
 @section('content')
 <div class="container">
     <div class="row">
@@ -37,8 +38,9 @@
                                         <span class="text-muted">{{ $conference['createDate'] }}</span><br>
                                     </td>
                                     <td>
-                                        <a type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" href="{{ route('admin.users.edit', ['id' => $conference['id']]) }}"><i class="bi bi-pencil-fill"></i></a>
-                                        <a type="button" class="btn btn-danger btn-circle btn-lg btn-circle ml-2" href="{{ route('admin.users.edit', ['id' => $conference['id']]) }}"><i class="bi-x-octagon-fill"></i> </a>
+                                        <a type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" href="{{ route('admin.conferences.show', ['id' => $conference['id']]) }}"><i class="bi bi-eye-fill"></i></a>
+                                        <a type="button" class="btn btn-outline-warning btn-circle btn-lg btn-circle ml-2" href="{{ route('admin.conferences.edit', ['id' => $conference['id']]) }}"><i class="bi bi-pencil-fill"></i></a>
+                                        <a type="button" class="btn btn-danger btn-circle btn-lg btn-circle ml-2" href="{{ route('admin.conferences.index') }}" onclick="return alert('{{__('app.confirmation')}}')"><i class="bi-x-octagon-fill"></i> </a>
                                     </td>
                                 </tr>
                             @endforeach

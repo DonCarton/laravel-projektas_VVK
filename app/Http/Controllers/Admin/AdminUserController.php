@@ -57,7 +57,8 @@ class AdminUserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        abort_if(!isset($this->users[$id]), 404);
+        return view('admin.viewUser', ['user' => $this->users[$id]]);
     }
 
     /**
@@ -66,7 +67,7 @@ class AdminUserController extends Controller
     public function edit(int $id)
     {
         abort_if(!isset($this->users[$id]), 404);
-        return view('admin.edit', ['user' => $this->users[$id]]);
+        return view('admin.editUser', ['user' => $this->users[$id]]);
     }
 
     /**
