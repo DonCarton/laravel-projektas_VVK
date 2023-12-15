@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Home Page')
+@section('title')
+    {{ __('app.home') }}
+@endsection
 @section('content')
-    Extended layout/app.blade.php
-    <h4>Welcome to laravel-projektas home page.</h4>
+    <div class="jumbotron text-center">
+        <h1>{{ __('app.welcome') }}</h1>
+    </div>
 @endsection
