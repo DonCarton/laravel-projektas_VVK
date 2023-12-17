@@ -41,7 +41,7 @@
                             <a class="nav-link" href="{{ route('admin.') }}">{{ __('app.adminPanel') }}</a>
                         </li>
                         <li class="nav-item" >
-                            <a class="nav-link" href="{{ route('admin.conferences.index') }}">{{ __('app.conferenceConsole') }}</a>
+                            <a class="nav-link" href="{{ route('employee.index') }}">{{ __('app.conferences') }}</a>
                         </li>
                         <li class="nav-item" >
                             <a class="nav-link" href="{{ route('admin.users.index') }}">{{ __('app.userConsole') }}</a>

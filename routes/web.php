@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminConferenceController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ArticlesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -45,6 +46,13 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::put('{id}', [AdminConferenceController::class, 'update'])->name('update');
         Route::delete('{id}', [AdminConferenceController::class, 'destroy'])->name('destroy');
     });
+
+});
+
+Route::prefix('employee')->name('employee.')->group(function() {
+
+    Route::get('/', [EmployeeController::class, 'index'])->name('index');
+    Route::get('/{id}', [EmployeeController::class, 'show'])->name('show');
 
 });
 
