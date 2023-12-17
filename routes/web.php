@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminConferenceController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ArticlesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -53,6 +54,14 @@ Route::prefix('employee')->name('employee.')->group(function() {
 
     Route::get('/', [EmployeeController::class, 'index'])->name('index');
     Route::get('/{id}', [EmployeeController::class, 'show'])->name('show');
+
+});
+
+Route::prefix('client')->name('client.')->group(function() {
+
+    Route::get('/', [ClientController::class, 'index'])->name('index');
+    Route::get('/registerForConference/{id}', [ClientController::class, 'registerForConference'])->name('register');
+    Route::get('/{id}', [ClientController::class, 'show'])->name('show');
 
 });
 

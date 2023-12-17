@@ -41,10 +41,10 @@
                             <a class="nav-link" href="{{ route('admin.') }}">{{ __('app.adminPanel') }}</a>
                         </li>
                         <li class="nav-item" >
-                            <a class="nav-link" href="{{ route('employee.index') }}">{{ __('app.conferences') }}</a>
+                            <a class="nav-link" href="{{ route('employee.index') }}">{{ __('app.employee') }}</a>
                         </li>
                         <li class="nav-item" >
-                            <a class="nav-link" href="{{ route('admin.users.index') }}">{{ __('app.userConsole') }}</a>
+                            <a class="nav-link" href="{{ route('client.index') }}">{{ __('app.client') }}</a>
                         </li>
                         <li class="nav-item" >
 {{--                            <a type="button" class="nav-link" href="{{ route('admin.users.index') }}" disabled>{{ __('app.logout') }}</a>--}}
