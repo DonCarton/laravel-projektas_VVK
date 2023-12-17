@@ -36,7 +36,7 @@ return [
     'userId' => 'Vartotojo ID',
     'userType' => 'Vartotojo tipas',
     'update' => 'Atnaujinti',
-    'createNew' => 'Sukurti naują',
+    'createNew' => 'Sukurti',
     'logout' => 'Atsijungti',
     'submit' => 'Pateikti',
     'saved' => 'Išsaugota',

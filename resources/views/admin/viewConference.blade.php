@@ -12,6 +12,8 @@
                     <div class="form-control">
                         <label for="eventName">{{ __('app.event_name') }}:</label>
                         <input type="text" class="form-control" id="eventName" name="eventName" value="{{$conference['eventName']}}" disabled>
+                        <label for="info">{{ __('app.info') }}:</label>
+                        <textarea class="form-control" id="info" rows="3" disabled>{{$conference['info']}}</textarea>
                         <label for="eventDate">{{ __('app.eventDate') }}:</label>
                         <input type="date" class="form-control" id="eventDate" name="eventDate" value="{{$conference['eventDate']}}" disabled>
                         <label for="location">{{ __('app.location') }}:</label>

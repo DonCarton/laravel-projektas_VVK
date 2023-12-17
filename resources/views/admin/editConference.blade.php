@@ -10,11 +10,13 @@
                 <h2>{{ __('app.edit') }} - {{ $conference['eventName'] }}</h2>
                 <form action="">
                     <div class="form-control">
-                        <label for="eventName">{{ __('app.event_name') }}:</label>
+                        <label for="eventName">{{ __('app.event_name') }}*:</label>
                         <input type="text" class="form-control" id="eventName" name="eventName" value="{{$conference['eventName']}}" required>
-                        <label for="eventDate">{{ __('app.eventDate') }}:</label>
+                        <label for="info">{{ __('app.info') }}*:</label>
+                        <textarea class="form-control" id="info" rows="3" required>{{$conference['info']}}</textarea>
+                        <label for="eventDate">{{ __('app.eventDate') }}*:</label>
                         <input type="date" class="form-control" id="eventDate" name="eventDate" value="{{$conference['eventDate']}}" required>
-                        <label for="location">{{ __('app.location') }}:</label>
+                        <label for="location">{{ __('app.location') }}*:</label>
                         <input type="text" class="form-control" id="location" name="location" value="{{$conference['location']}}" required>
                         <div class="m-2">
                             <a type="button" class="btn btn-outline-info" onclick="return alert('{{__('app.saved')}}.')" href="{{ route('admin.conferences.index') }}">{{ __('app.submit') }}</a>

@@ -4,7 +4,6 @@ use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminConferenceController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ClientController;
-use App\Http\Controllers\ArticlesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,9 +21,7 @@ use Illuminate\Support\Facades\Route;
 app()->setLocale('lt');
 
 Route::get('/', function (){ return view('home.index'); })->name('dashboard');
-Route::get('/contact', function (){ return view('home.contact'); })->name('contact');
-Route::resource('articles', ArticlesController::class)->only(['index', 'show']);
-
+//Route::get('/', function (){ return view('welcome'); })->name('dashboard');
 
 
 Route::prefix('admin')->name('admin.')->group(function(){
@@ -67,4 +64,4 @@ Route::prefix('client')->name('client.')->group(function() {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
