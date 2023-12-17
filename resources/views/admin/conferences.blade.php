@@ -47,6 +47,9 @@
                         </tbody>
                     </table>
                 </div>
+                    <div>
+                        <a type="button" class="btn btn-outline-success btn-circle btn-lg btn-circle ml-2 m-2" href="{{ route('admin.conferences.create')}} ">{{ __('app.createNew') }}</a>
+                    </div>
                 @else
                     <h2 class="text-center" style="font-size: large">{{ __('app.dataNotFound') }}</h2>
                 @endif

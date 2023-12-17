@@ -37,7 +37,7 @@ return [
     'userId' => 'User ID',
     'userType' => 'User Type',
     'update' => 'Update',
-    'createNew' => 'Create a new',
+    'createNew' => 'Create',
     'logout' => 'Log out',
     'submit' => 'Submit',
     'saved' => 'Saved',
