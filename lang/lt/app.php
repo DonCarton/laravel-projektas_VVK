@@ -28,6 +28,7 @@ return [
     'dataNotFound' => 'Nėra duomenų',
     'eventName' => 'Konferencijos pavadinimas',
     'eventUserCount' => 'Dalyvių skaičius',
+    'eventAttendees' => 'Dalyviai',
     'name' => 'Pavadinimas',
     'firstName' => 'Vardas',
     'surname' => 'Pavardė',
