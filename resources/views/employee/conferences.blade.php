@@ -20,6 +20,7 @@
                                     <th scope="col" class="border-0 text-uppercase font-medium">{{ __('app.eventName') }}</th>
                                     <th scope="col" class="border-0 text-uppercase font-medium">{{ __('app.eventUserCount') }}</th>
                                     <th scope="col" class="border-0 text-uppercase font-medium">{{ __('app.createDate') }}</th>
+                                    <th scope="col" class="border-0 text-uppercase font-medium">{{ __('app.eventDate') }}</th>
                                     <th scope="col" class="border-0 text-uppercase font-medium">{{ __('app.actions') }}</th>
                                 </tr>
                                 </thead>
@@ -36,6 +37,9 @@
                                         </td>
                                         <td>
                                             <span class="text-muted">{{ $conference['createDate'] }}</span><br>
+                                        </td>
+                                        <td>
+                                            <span class="text-muted">{{ $conference['eventDate'] }}</span><br>
                                         </td>
                                         <td>
                                             <a type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" href="{{ route('employee.show', ['id' => $conference['id']]) }}"><i class="bi bi-eye-fill"></i></a>

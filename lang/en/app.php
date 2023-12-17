@@ -29,6 +29,7 @@ return [
     'dataNotFound' => 'No data not found',
     'eventName' => 'Event name',
     'eventUserCount' => 'Event user count',
+    'eventAttendees' => 'Attendees',
     'name' => 'Name',
     'firstName' => 'First name',
     'surname' => 'Last name',
