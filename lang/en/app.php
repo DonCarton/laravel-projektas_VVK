@@ -11,7 +11,7 @@ return [
     'conference_not_found' => 'Conference not found',
     'conf_reg' => 'Register to conference',
     'register' => 'Register',
-    'conferences' => 'Conferences',
+    'conferences' => 'Conference',
     'more' => 'More',
     'info' => 'Information',
     'date' => 'Date',
