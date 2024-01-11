@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\Conference;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ * @extends Factory<Conference>
  */
 class ConferenceFactory extends Factory
 {
@@ -18,6 +19,7 @@ class ConferenceFactory extends Factory
     {
         return [
             'eventName' => fake()->text(15),
+            'eventDate' => fake()->dateTime('now', null),
             'location' => fake()->text(15),
             'info' => fake()->paragraph(3)
         ];
