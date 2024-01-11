@@ -47,6 +47,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class);
     }
+    public function conferences(): BelongsToMany
+    {
+        return $this->belongsToMany(Conference::class);
+    }
 
     public function firstOrCreate(array $user)
     {
