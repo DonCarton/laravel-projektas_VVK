@@ -40,50 +40,50 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
-                        <li class="nav-item" >
-                            <a class="nav-link" href="{{ route('admin.') }}">{{ __('app.adminPanel') }}</a>
-                        </li>
-                        <li class="nav-item" >
-                            <a class="nav-link" href="{{ route('employee.index') }}">{{ __('app.employee') }}</a>
-                        </li>
-                        <li class="nav-item" >
-                            <a class="nav-link" href="{{ route('client.index') }}">{{ __('app.client') }}</a>
-                        </li>
-                        <li class="nav-item" >
-{{--                            <a type="button" class="nav-link" href="{{ route('admin.users.index') }}" disabled>{{ __('app.logout') }}</a>--}}
-                            <button class="nav-link" disabled>{{ __('app.logout') }}</button>
-                        </li>
-                    {{--@guest
-                        @if (Route::has('login'))
+                        @guest
+                            @if (Route::has('login'))
+                                <li class="nav-item" >
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('app.login') }}</a>
+                                </li>
+                            @endif
+
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('app.register') }}</a>
+                                </li>
+                            @endif
+                        @else
                             <li class="nav-item" >
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('admin.') }}">{{ __('app.adminPanel') }}</a>
                             </li>
-                        @endif
-
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <li class="nav-item" >
+                                <a class="nav-link" href="{{ route('employee.index') }}">{{ __('app.employee') }}</a>
                             </li>
-                        @endif
-                    @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                            <li class="nav-item" >
+                                <a class="nav-link" href="{{ route('client.index') }}">{{ __('app.client') }}</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                    @endguest--}}
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                        {{--                        <li class="nav-item" >--}}
+                        {{--                            <a type="button" class="nav-link" href="{{ route('admin.users.index') }}" disabled>{{ __('app.logout') }}</a>--}}
+                        {{--                            <button class="nav-link" disabled>{{ __('app.logout') }}</button>--}}
+                        {{--                        </li>--}}
                     </ul>
                 </div>
             </div>

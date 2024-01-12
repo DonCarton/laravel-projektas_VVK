@@ -1,5 +1,10 @@
 <?php
 return [
+    'login' => 'Prisijungti',
+    'username' => 'Vartotojo vardas',
+    'password' => 'Slaptažodis',
+    'confirmPassword' => 'Patvirtinti slaptažodį',
+    'rememberMe' => 'Prisiminti mane',
     'employee' => 'Darbuotojas',
     'actions' => 'Veiksmai',
     'client' => 'Klientas',
