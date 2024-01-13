@@ -1,5 +1,10 @@
 <?php
 return [
+    'login' => 'Login',
+    'username' => 'Username',
+    'password' => 'Password',
+    'confirmPassword' => 'Confirm password',
+    'rememberMe' => 'Remember me',
     'employee' => 'Employee',
     'actions' => 'Actions',
     'client' => 'Client',
