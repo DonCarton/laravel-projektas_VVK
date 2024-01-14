@@ -9,6 +9,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Conference extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'eventName',
+        'eventDate',
+        'location',
+        'info'
+    ];
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class);

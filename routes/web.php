@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function (){
             Route::get('{id}', [AdminUserController::class, 'show'])->name('show');
             Route::get('{id}/editUser', [AdminUserController::class, 'edit'])->name('edit');
             Route::put('{id}', [AdminUserController::class, 'update'])->name('update');
+            Route::delete('{id}', [AdminUserController::class, 'destroy'])->name('destroy');
         });
 
         Route::prefix('conferences')->name('conferences.')->group(function (){
@@ -51,7 +52,7 @@ Route::middleware('auth')->group(function (){
             Route::get('{id}', [AdminConferenceController::class, 'show'])->name('show');
             Route::get('{id}/editConference', [AdminConferenceController::class, 'edit'])->name('edit');
             Route::get('/createConference', [AdminConferenceController::class, 'create'])->name('create');
-            Route::post('{conferenceId}', [AdminConferenceController::class, 'store'])->name('store');
+            Route::post('/', [AdminConferenceController::class, 'store'])->name('store');
             Route::put('{id}', [AdminConferenceController::class, 'update'])->name('update');
             Route::delete('{id}', [AdminConferenceController::class, 'destroy'])->name('destroy');
         });

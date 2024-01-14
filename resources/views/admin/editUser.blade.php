@@ -1,27 +1,36 @@
 @extends('layouts.app')
 
 @section('title')
-    {{ __('app.edit') }} - {{ $user['lastName'] }}, {{ $user['firstName'] }}
+    {{ __('app.edit') }} - {{ $user['name'] }}
 @endsection
 @section('content')
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <h2>{{ __('app.edit') }} - {{ $user['lastName'] }}, {{ $user['firstName'] }}</h2>
-                <form action="">
+                <h2>{{ __('app.edit') }} - {{ $user['name'] }}</h2>
+                <form action="{{ route('admin.users.update', $user->id) }}" method="POST">
                     <div class="form-control">
-                        <label for="firstName">{{ __('app.firstName') }}:</label>
-                        <input type="text" class="form-control" id="firstName" name="firstName" value="{{$user['firstName']}}" required >
-                        <label for="lastName">{{ __('app.surname') }}:</label>
-                        <input type="text" class="form-control" id="lastName" name="lastName" value="{{$user['lastName']}}" required >
+                        <label for="name">{{ __('app.name') }}:</label>
+                        <input type="text" class="form-control" id="name" name="name" value="{{$user['name']}}" required >
+                        <label for="username">{{ __('app.username') }}:</label>
+                        <input type="text" class="form-control" id="username" name="username" value="{{$user['username']}}" required >
                         <label for="email">{{ __('app.email') }}:</label>
                         <input type="email" class="form-control" id="email" name="email" value="{{$user['email']}}" required >
                         <div class="m-2">
-                            <a type="button" class="btn btn-outline-info" onclick="return alert('{{__('app.saved')}}.')" href="{{ route('admin.users.index') }}">{{ __('app.submit') }}</a>
+                            <form action="{{ route('admin.users.update', ['id' => $user->id]) }}" method="post">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit" class="btn btn-outline-info">{{ __('app.submit') }}</button>
+                            </form>
                             <a type="button" class="btn btn-outline-secondary" href="{{ route('admin.users.index') }}">{{ __('app.cancel') }}</a>
                         </div>
                     </div>
-            </form>
+                </form>
             </div>
         </div>
     </div>

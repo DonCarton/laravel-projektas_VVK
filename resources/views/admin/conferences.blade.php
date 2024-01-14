@@ -4,6 +4,11 @@
     {{ __('app.conferenceConsole') }}
 @endsection
 @section('content')
+    @if (session('success'))
+        <div class="alert alert-warning text-center">
+            {{ session('success') }}
+        </div>
+    @endif
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -18,7 +23,7 @@
                         <tr>
                             <th scope="col" class="border-0 text-uppercase font-medium pl-4">ID</th>
                             <th scope="col" class="border-0 text-uppercase font-medium">{{ __('app.eventName') }}</th>
-                            <th scope="col" class="border-0 text-uppercase font-medium">{{ __('app.eventUserCount') }}</th>
+{{--                            <th scope="col" class="border-0 text-uppercase font-medium">{{ __('app.eventUserCount') }}</th>--}}
                             <th scope="col" class="border-0 text-uppercase font-medium">{{ __('app.createDate') }}</th>
                             <th scope="col" class="border-0 text-uppercase font-medium">{{ __('app.actions') }}</th>
                         </tr>
@@ -26,33 +31,38 @@
                         <tbody>
                             @foreach($conferences as $conference)
                                 <tr>
-                                    <td class="pl-4">{{ $conference['id'] }}</td>
+                                    <td class="pl-4">{{ $conference->id }}</td>
                                     <td>
-                                        <h5 class="font-medium mb-0">{{ $conference['eventName'] }}</h5>
-                                        <span class="text-muted">{{ $conference['location'] }}</span>
+                                        <h5 class="font-medium mb-0">{{ $conference->eventName }}</h5>
+                                        <span class="text-muted">{{ $conference->location }}</span>
                                     </td>
-                                    <td class="text-wrap">
-                                        <span class="badge badge-primary badge-pill bg-black">{{ count($conference['registeredUsers']) }}</span><br>
+{{--                                    <td class="text-wrap">--}}
+{{--                                        <span class="badge badge-primary badge-pill bg-black">{{ count($conference->registeredUsers) }}</span><br>--}}
+{{--                                    </td>--}}
+                                    <td>
+                                        <span class="text-muted">{{ $conference->created_at }}</span><br>
                                     </td>
                                     <td>
-                                        <span class="text-muted">{{ $conference['createDate'] }}</span><br>
-                                    </td>
-                                    <td>
-                                        <a type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" href="{{ route('admin.conferences.show', ['id' => $conference['id']]) }}"><i class="bi bi-eye-fill"></i></a>
-                                        <a type="button" class="btn btn-outline-warning btn-circle btn-lg btn-circle ml-2" href="{{ route('admin.conferences.edit', ['id' => $conference['id']]) }}"><i class="bi bi-pencil-fill"></i></a>
-                                        <a type="button" class="btn btn-danger btn-circle btn-lg btn-circle ml-2" href="{{ route('admin.conferences.index') }}" onclick="return alert('{{__('app.confirmation')}}')"><i class="bi-x-octagon-fill"></i> </a>
+                                        <a type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" href="{{ route('admin.conferences.show', ['id' => $conference->id]) }}"><i class="bi bi-eye-fill"></i></a>
+                                        <a type="button" class="btn btn-outline-warning btn-circle btn-lg btn-circle ml-2" href="{{ route('admin.conferences.edit', ['id' => $conference->id]) }}"><i class="bi bi-pencil-fill"></i></a>
+                                        <form action="{{ route('admin.conferences.destroy', ['id' => $conference->id]) }}" method="post" >
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" onclick="return alert('{{__('app.confirmation')}}')" class="btn btn-danger btn-circle btn-lg btn-circle ml-1" ><i class="bi-x-octagon-fill"></i></button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
-                    <div>
-                        <a type="button" class="btn btn-outline-success btn-circle btn-lg btn-circle ml-2 m-2" href="{{ route('admin.conferences.create')}} ">{{ __('app.createNew') }}</a>
-                    </div>
                 @else
                     <h2 class="text-center" style="font-size: large">{{ __('app.dataNotFound') }}</h2>
                 @endif
+
+                <div>
+                    <a type="button" class="btn btn-outline-success btn-circle btn-lg btn-circle ml-2 m-2" href="{{ route('admin.conferences.create')}} ">{{ __('app.createNew') }}</a>
+                </div>
             </div>
         </div>
     </div>
