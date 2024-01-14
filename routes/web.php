@@ -6,7 +6,6 @@ use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminConferenceController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ClientController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,7 +33,7 @@ Route::post('register', [RegisterController::class, 'register'])->name('register
 
 Route::middleware('auth')->group(function (){
 
-    Route::prefix('admin')->name('admin.')->group(function()
+    Route::prefix('admin')->name('admin.')->middleware('isAdmin:Admin role')->group(function()
     {
 
         Route::get('/', function (){return view('admin.index');});
@@ -59,7 +58,7 @@ Route::middleware('auth')->group(function (){
 
     });
 
-    Route::prefix('employee')->name('employee.')->group(function()
+    Route::prefix('employee')->name('employee.')->middleware('isAdmin:Employee role')->group(function()
     {
 
         Route::get('/', [EmployeeController::class, 'index'])->name('index');
@@ -67,7 +66,7 @@ Route::middleware('auth')->group(function (){
 
     });
 
-    Route::prefix('client')->name('client.')->group(function()
+    Route::prefix('client')->name('client.')->middleware('isAdmin:Client role')->group(function()
     {
 
         Route::get('/', [ClientController::class, 'index'])->name('index');
