@@ -2,10 +2,14 @@
 
 @section('title', 'Create conference')
 @section('content')
+    @if (session('success'))
+        <div class="alert alert-success text-center">
+            {{ session('success') }}
+        </div>
+    @endif
     <div class="container">
         <h2>{{ __('app.createNew') }}</h2>
-        <form method="POST" action="">
-            @csrf
+        <form action="{{ route('admin.conferences.store') }}" method="POST" >
             <div class="form-group">
                 <label for="eventName">{{ __('app.eventName') }}*:</label>
                 <input type="text" class="form-control" id="eventName" name="eventName" required>
@@ -16,13 +20,16 @@
             </div>
             <div class="form-group">
                 <label for="eventDate">{{ __('app.eventDate') }}*:</label>
-                <input type="text" class="form-control" id="eventDate" name="eventDate" required>
+                <input type="datetime-local" class="form-control" id="eventDate" name="eventDate" required>
             </div>
             <div class="form-group">
                 <label for="location">{{ __('app.location') }}*:</label>
                 <input type="text" class="form-control" id="location" name="location" required>
             </div>
-            <a type="button" class="btn btn-outline-info m-2" onclick="return alert('{{__('app.saved')}}.')" href="{{ route('admin.conferences.index') }}">{{ __('app.submit') }}</a>
+            <form action="{{ route('admin.conferences.store') }}" method="post">
+                @csrf
+                <button type="submit" class="btn btn-outline-info">{{ __('app.submit') }}</button>
+            </form>
         </form>
     </div>
 @endsection

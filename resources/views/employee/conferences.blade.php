@@ -4,6 +4,11 @@
     {{ __('app.conferenceConsole') }}
 @endsection
 @section('content')
+    @if (session('error'))
+        <div class="alert alert-danger text-center">
+            {{ session('error') }}
+        </div>
+    @endif
     <div class="container">
         <div class="row">
             <div class="col-md-12">

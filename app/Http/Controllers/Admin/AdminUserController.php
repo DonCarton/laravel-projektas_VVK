@@ -3,37 +3,22 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\RedirectResponse;
 
 class AdminUserController extends Controller
 {
-    private array $users =
-        [
-            1 => [
-                'id' => 1,
-                'firstName' => 'Vardenis',
-                'lastName' => 'Vardeninis',
-                'email' => 'vardenis@mail',
-                'username' => 'vardis',
-                'userType' => 'client'
-            ],
-            2 => [
-                'id' => 2,
-                'firstName' => 'Pardenis',
-                'lastName' => 'Pardeninis',
-                'email' => 'pardenis@mail',
-                'username' => 'pardis',
-                'userType' => 'employee'
-            ]
-        ];
     /**
      * Display a listing of the resource.
      * @return View
      */
     public function index(): View
     {
-        return view('admin.users', ['users' => $this->users]);
+        $users = DB::table('users')->get();
+        return view('admin.users', ['users' => $users]);
     }
 
     /**
@@ -49,40 +34,67 @@ class AdminUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:255',
+            'username' => 'required|max:255',
+            'email' => 'required|max:255',
+        ]);
+        User::create($request->all());
+        return redirect()->route('admin.users.index')
+            ->with('success', 'User created successfully.');
     }
 
     /**
      * Display the specified resource.
+     * @param int $id
+     * @return View
      */
-    public function show(string $id)
+    public function show(int $id): View
     {
-        abort_if(!isset($this->users[$id]), 404);
-        return view('admin.viewUser', ['user' => $this->users[$id]]);
+        return view('admin.viewUser', [
+            'user' => User::findOrFail($id)
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
+     * @param int $id
+     * @return View
      */
-    public function edit(int $id)
+    public function edit(int $id): View
     {
-        abort_if(!isset($this->users[$id]), 404);
-        return view('admin.editUser', ['user' => $this->users[$id]]);
+        return view('admin.editUser', [
+            'user' => User::findOrFail($id)
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
+     * @param Request $request
+     * @param int $id
+     * @return RedirectResponse
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, int $id): RedirectResponse
     {
-        //
+        $request->validate([
+            'name' => 'required|max:255'
+        ]);
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+        return redirect()->route('admin.users.edit', $user->id)
+            ->with('success', 'User updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
+     * @param $id
+     * @return RedirectResponse
      */
-    public function destroy(string $id)
+    public function destroy($id): RedirectResponse
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('admin.users.index')
+            ->with('success', 'User deleted successfully.');
     }
 }

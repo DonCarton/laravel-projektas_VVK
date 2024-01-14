@@ -6,7 +6,6 @@ use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminConferenceController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ClientController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,7 +33,7 @@ Route::post('register', [RegisterController::class, 'register'])->name('register
 
 Route::middleware('auth')->group(function (){
 
-    Route::prefix('admin')->name('admin.')->group(function()
+    Route::prefix('admin')->name('admin.')->middleware('isAdmin:Admin role')->group(function()
     {
 
         Route::get('/', function (){return view('admin.index');});
@@ -44,6 +43,7 @@ Route::middleware('auth')->group(function (){
             Route::get('{id}', [AdminUserController::class, 'show'])->name('show');
             Route::get('{id}/editUser', [AdminUserController::class, 'edit'])->name('edit');
             Route::put('{id}', [AdminUserController::class, 'update'])->name('update');
+            Route::delete('{id}', [AdminUserController::class, 'destroy'])->name('destroy');
         });
 
         Route::prefix('conferences')->name('conferences.')->group(function (){
@@ -51,14 +51,14 @@ Route::middleware('auth')->group(function (){
             Route::get('{id}', [AdminConferenceController::class, 'show'])->name('show');
             Route::get('{id}/editConference', [AdminConferenceController::class, 'edit'])->name('edit');
             Route::get('/createConference', [AdminConferenceController::class, 'create'])->name('create');
-            Route::post('{conferenceId}', [AdminConferenceController::class, 'store'])->name('store');
+            Route::post('/', [AdminConferenceController::class, 'store'])->name('store');
             Route::put('{id}', [AdminConferenceController::class, 'update'])->name('update');
             Route::delete('{id}', [AdminConferenceController::class, 'destroy'])->name('destroy');
         });
 
     });
 
-    Route::prefix('employee')->name('employee.')->group(function()
+    Route::prefix('employee')->name('employee.')->middleware('isAdmin:Employee role')->group(function()
     {
 
         Route::get('/', [EmployeeController::class, 'index'])->name('index');
@@ -66,7 +66,7 @@ Route::middleware('auth')->group(function (){
 
     });
 
-    Route::prefix('client')->name('client.')->group(function()
+    Route::prefix('client')->name('client.')->middleware('isAdmin:Client role')->group(function()
     {
 
         Route::get('/', [ClientController::class, 'index'])->name('index');

@@ -54,15 +54,24 @@
                                 </li>
                             @endif
                         @else
+                            @if(Auth::user()->roles()->where('name','=','Admin role')->exists())
                             <li class="nav-item" >
-                                <a class="nav-link" href="{{ route('admin.') }}">{{ __('app.adminPanel') }}</a>
+                                <a class="nav-link" href="{{ route('admin.users.index') }}">{{ __('app.userConsole')}}</a>
                             </li>
                             <li class="nav-item" >
-                                <a class="nav-link" href="{{ route('employee.index') }}">{{ __('app.employee') }}</a>
+                                <a class="nav-link" href="{{ route('admin.conferences.index') }}">{{ __('app.conferenceConsole')}}</a>
                             </li>
+                            @endif
+                            @if(Auth::user()->roles()->where('name','=','Employee role')->exists())
                             <li class="nav-item" >
-                                <a class="nav-link" href="{{ route('client.index') }}">{{ __('app.client') }}</a>
+                                <a class="nav-link" href="{{ route('employee.index') }}">{{ __('app.conferences') }}</a>
                             </li>
+                            @endif
+                            @if(Auth::user()->roles()->where('name','=','Client role')->exists())
+                            <li class="nav-item" >
+                                <a class="nav-link" href="{{ route('client.index') }}">{{ __('app.conferences') }}</a>
+                            </li>
+                            @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
