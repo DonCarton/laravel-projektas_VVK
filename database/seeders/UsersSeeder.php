@@ -25,18 +25,18 @@ class UsersSeeder extends Seeder
                 'updated_at' => now(),
         ]);
         DB::table('users')->insert([
+            'name' => 'Regular Employee',
+            'username' => 'RegEmp',
+            'email' => 'regemp@tutanota.com',
+            'password' => Hash::make('secretpass2'),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        DB::table('users')->insert([
                 'name' => 'Test User',
                 'username' => 'TestUser',
                 'email' => 'testuser@tutanota.com',
                 'password' => Hash::make('secretpass1'),
-                'created_at' => now(),
-                'updated_at' => now(),
-        ]);
-        DB::table('users')->insert([
-                'name' => 'Regular Employee',
-                'username' => 'RegEmp',
-                'email' => 'regemp@tutanota.com',
-                'password' => Hash::make('secretpass2'),
                 'created_at' => now(),
                 'updated_at' => now(),
         ]);

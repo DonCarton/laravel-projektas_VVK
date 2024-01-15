@@ -32,22 +32,22 @@
                                 <tbody>
                                 @foreach($conferences as $conference)
                                     <tr>
-                                        <td class="pl-4">{{ $conference['id'] }}</td>
+                                        <td class="pl-4">{{ $conference->id }}</td>
                                         <td>
-                                            <h5 class="font-medium mb-0">{{ $conference['eventName'] }}</h5>
-                                            <span class="text-muted">{{ $conference['location'] }}</span>
+                                            <h5 class="font-medium mb-0">{{ $conference->eventName }}</h5>
+                                            <span class="text-muted">{{ $conference->location }}</span>
                                         </td>
                                         <td class="text-wrap">
-                                            <span class="badge badge-primary badge-pill bg-black">{{ count($conference['registeredUsers']) }}</span><br>
+                                            <span class="badge badge-primary badge-pill bg-black">{{ $conference->users->count() }}</span><br>
                                         </td>
                                         <td>
-                                            <span class="text-muted">{{ $conference['createDate'] }}</span><br>
+                                            <span class="text-muted">{{ \Carbon\Carbon::parse($conference->created_at)->format('Y-m-d H:m') }}</span><br>
                                         </td>
                                         <td>
-                                            <span class="text-muted">{{ $conference['eventDate'] }}</span><br>
+                                            <span class="text-muted">{{ \Carbon\Carbon::parse($conference->eventDate)->format('Y-m-d H:m') }}</span><br>
                                         </td>
                                         <td>
-                                            <a type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" href="{{ route('employee.show', ['id' => $conference['id']]) }}"><i class="bi bi-eye-fill"></i></a>
+                                            <a type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" href="{{ route('employee.show', ['id' => $conference->id]) }}"><i class="bi bi-eye-fill"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

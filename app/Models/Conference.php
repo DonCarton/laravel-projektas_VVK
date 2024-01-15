@@ -17,6 +17,6 @@ class Conference extends Model
     ];
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'users_conferences', 'conferenceID', 'userID')->withTimestamps();
     }
 }

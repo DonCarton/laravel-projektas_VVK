@@ -1,6 +1,8 @@
 <?php
 return [
-    'login' => 'Prisijungti',
+    'object' => 'Objektas',
+    'login' => 'Prisijungimas',
+    'log in' => 'Prisijungti',
     'username' => 'Vartotojo vardas',
     'password' => 'Slaptažodis',
     'confirmPassword' => 'Patvirtinti slaptažodį',
@@ -17,6 +19,7 @@ return [
     'conf_reg' => 'Registruotis į konferenciją',
     'register' => 'Registruotis',
     'conferences' => 'Konferencijos',
+    'conference' => 'Konferencija',
     'more' => 'Plačiau',
     'info' => 'Informacija',
     'date' => 'Data',
@@ -27,6 +30,8 @@ return [
     'future_conferences' => 'Būsimos konferencijos',
     'adminPanel' => 'Administratoriaus skydelis',
     'userConsole' => 'Visi vartotojai',
+    'users' => 'Vartotojai',
+    'user' => 'Vartotojas',
     'conferenceConsole' => 'Visos konferencijos',
     'edit' => 'Redaguoti',
     'delete' => 'Ištrinti',
@@ -49,5 +54,7 @@ return [
     'view' => 'Peržiūrėti',
     'home' => 'Pagrindinis',
     'welcome' => 'Sveik atvykę į pagrindinį puslapį!',
-    'confirmation' => 'Ar tikrai?'
+    'successLogin' => 'Jūs sėkmingai prisijungėte!',
+    'confirmation' => 'Ar tikrai?',
+    'dashboard' => 'Informacinis skydelis'
 ];

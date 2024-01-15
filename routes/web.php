@@ -70,7 +70,8 @@ Route::middleware('auth')->group(function (){
     {
 
         Route::get('/', [ClientController::class, 'index'])->name('index');
-        Route::get('/registerForConference/{id}', [ClientController::class, 'registerForConference'])->name('register');
+//        Route::get('/registerForConference/{id}', [ClientController::class, 'registerForConference'])->name('register');
+        Route::post('/', [ClientController::class, 'registerForConference'])->name('register');
         Route::get('/{id}', [ClientController::class, 'show'])->name('show');
 
     });

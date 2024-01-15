@@ -16,7 +16,7 @@
             </div>
             <div class="form-group">
                 <label for="info">{{ __('app.info') }}*:</label>
-                <input type="text" class="form-control" id="info" name="info" required>
+                <textarea class="form-control" rows="3" id="info" name="info" required></textarea>
             </div>
             <div class="form-group">
                 <label for="eventDate">{{ __('app.eventDate') }}*:</label>
@@ -29,6 +29,7 @@
             <form action="{{ route('admin.conferences.store') }}" method="post">
                 @csrf
                 <button type="submit" class="btn btn-outline-info">{{ __('app.submit') }}</button>
+                <a type="button" class="btn btn-outline-secondary" href="{{ route('admin.conferences.index') }}">{{ __('app.cancel') }}</a>
             </form>
         </form>
     </div>

@@ -8,6 +8,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class AdminConferenceController extends Controller
 {
@@ -17,7 +18,8 @@ class AdminConferenceController extends Controller
      */
     public function index(): View
     {
-        $conferences = DB::table('conferences')->get();
+//        $conferences = DB::table('conferences')->get();
+        $conferences = Conference::with('users')->get();
         return view('admin.conferences', ['conferences' => $conferences]);
     }
 
@@ -42,7 +44,7 @@ class AdminConferenceController extends Controller
 
         Conference::create($request->all());
         return redirect()->route('admin.conferences.index')
-            ->with('success', 'Conference created successfully.');
+            ->with('success', __('app.object').' '.Str::of(__('actions.created'))->lower().' '.Str::of(__('actions.successfully'))->lower().'.');
     }
 
     /**
@@ -83,7 +85,7 @@ class AdminConferenceController extends Controller
         $conference = Conference::findOrFail($id);
         $conference->update($request->except(['_token','_method']));
         return redirect()->route('admin.conferences.edit', $conference->id)
-            ->with('success', 'Conference updated successfully.');
+            ->with('success', __('app.object').' '.Str::of(__('actions.updated'))->lower().' '.Str::of(__('actions.successfully'))->lower().'.');
     }
 
     /**
@@ -96,6 +98,6 @@ class AdminConferenceController extends Controller
         $conference = Conference::findOrFail($id);
         $conference->delete();
         return redirect()->route('admin.conferences.index')
-            ->with('success', 'Conference deleted successfully');
+            ->with('successDelete', __('app.object').' '.Str::of(__('actions.deleted'))->lower().' '.Str::of(__('actions.successfully'))->lower().'.');
     }
 }
