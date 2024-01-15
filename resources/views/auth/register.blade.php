@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+    {{ __('app.register') }}
+@endsection
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

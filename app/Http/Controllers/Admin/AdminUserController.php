@@ -8,6 +8,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Str;
 
 class AdminUserController extends Controller
 {
@@ -17,7 +18,7 @@ class AdminUserController extends Controller
      */
     public function index(): View
     {
-        $users = DB::table('users')->get();
+        $users = User::get();
         return view('admin.users', ['users' => $users]);
     }
 
@@ -32,7 +33,7 @@ class AdminUserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'name' => 'required|max:255',
@@ -41,7 +42,7 @@ class AdminUserController extends Controller
         ]);
         User::create($request->all());
         return redirect()->route('admin.users.index')
-            ->with('success', 'User created successfully.');
+            ->with('success', __('app.object').' '.Str::of(__('actions.created'))->lower().' '.Str::of(__('actions.successfully'))->lower().'.');
     }
 
     /**
@@ -82,7 +83,7 @@ class AdminUserController extends Controller
         $user = User::findOrFail($id);
         $user->update($request->all());
         return redirect()->route('admin.users.edit', $user->id)
-            ->with('success', 'User updated successfully.');
+            ->with('success', __('app.object').' '.Str::of(__('actions.updated'))->lower().' '.Str::of(__('actions.successfully'))->lower().'.');
     }
 
     /**
@@ -95,6 +96,6 @@ class AdminUserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
         return redirect()->route('admin.users.index')
-            ->with('success', 'User deleted successfully.');
+            ->with('success', __('app.object').' '.Str::of(__('actions.deleted'))->lower().' '.Str::of(__('actions.successfully'))->lower().'.');
     }
 }

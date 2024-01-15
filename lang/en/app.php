@@ -1,6 +1,8 @@
 <?php
 return [
+    'object' => 'Object',
     'login' => 'Login',
+    'log in' => 'Log in',
     'username' => 'Username',
     'password' => 'Password',
     'confirmPassword' => 'Confirm password',
@@ -16,7 +18,8 @@ return [
     'conference_not_found' => 'Conference not found',
     'conf_reg' => 'Register to conference',
     'register' => 'Register',
-    'conferences' => 'Conference',
+    'conferences' => 'Conferences',
+    'conference' => 'Conference',
     'more' => 'More',
     'info' => 'Information',
     'date' => 'Date',
@@ -28,6 +31,7 @@ return [
     'adminPanel' => 'Admin panel',
     'userConsole' => 'All users',
     'users' => 'Users',
+    'user' => 'User',
     'conferenceConsole' => 'Conference management',
     'edit' => 'Edit',
     'delete' => 'Delete',
@@ -50,5 +54,7 @@ return [
     'view' => 'View',
     'home' => 'Home',
     'welcome' => 'Welcome to the home page!',
-    'confirmation' => 'Are you sure?'
+    'successLogin' => 'You have successfully logged in!',
+    'confirmation' => 'Are you sure?',
+    'dashboard' => 'Dashboard'
 ];

@@ -4,8 +4,11 @@
     {{ __('app.conferenceConsole') }}
 @endsection
 @section('content')
-
-    @if (session('error'))
+    @if (session('success'))
+        <div class="alert alert-success text-center">
+            {{ session('success') }}
+        </div>
+    @elseif(session('error'))
         <div class="alert alert-danger text-center">
             {{ session('error') }}
         </div>
@@ -31,25 +34,30 @@
                                 </thead>
                                 <tbody>
                                 @foreach($conferences as $conference)
-                                    @if($conference['eventDate'] > \Carbon\Carbon::now()->format('Y-m-d'))
                                     <tr>
-                                        <td class="pl-4">{{ $conference['id'] }}</td>
+                                        <td class="pl-4">{{ $conference->id }}</td>
                                         <td>
-                                            <h5 class="font-medium mb-0">{{ $conference['eventName'] }}</h5>
-                                            <span class="text-muted">{{ $conference['location'] }}</span>
+                                            <h5 class="font-medium mb-0">{{ $conference->eventName }}</h5>
+                                            <span class="text-muted">{{ $conference->location }}</span>
                                         </td>
                                         <td class="text-wrap">
-                                            <span class="badge badge-primary badge-pill bg-black">{{ count($conference['registeredUsers']) }}</span><br>
+                                            <span class="badge badge-primary badge-pill bg-black">{{ $conference->users->count() }}</span><br>
                                         </td>
                                         <td>
-                                            <span class="text-muted">{{ $conference['eventDate'] }}</span><br>
+                                            <span class="text-muted">{{ \Carbon\Carbon::parse($conference->eventDate)->format('Y-m-d H:i') }}</span><br>
                                         </td>
                                         <td>
-                                            <a type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" href="{{ route('client.show', ['id' => $conference['id']]) }}"><i class="bi bi-eye-fill"></i></a>
-                                            <a type="button" class="btn btn-success btn-circle btn-lg btn-circle ml-2" href="{{ route('client.register', ['id' => $conference['id']]) }}"><i class="bi bi-pencil"></i></a>
+                                            <form action="{{ route('client.register') }}" method="post">
+                                                @csrf
+                                                <input type="text" class="form-control d-none" id="conferenceID" name="conferenceID" value="{{$conference->id}}">
+                                                <input type="text" class="form-control d-none" id="userID" name="userID" value="{{Auth::user()->id}}">
+                                                <a type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" href="{{ route('client.show', ['id' => $conference->id]) }}"><i class="bi bi-eye-fill"></i></a>
+                                                @if(Auth::user()->conferences()->where('conferenceID','=',$conference->id)->count() <= 0)
+                                                <button type="submit" class="btn btn-success btn-circle btn-lg btn-circle ml-2"><i class="bi bi-pencil"></i></button>
+                                                @endif
+                                            </form>
                                         </td>
                                     </tr>
-                                    @endif
                                 @endforeach
                                 </tbody>
                             </table>

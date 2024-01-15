@@ -5,8 +5,12 @@
 @endsection
 @section('content')
     @if (session('success'))
-        <div class="alert alert-warning text-center">
+        <div class="alert alert-success text-center">
             {{ session('success') }}
+        </div>
+    @elseif(session('error'))
+        <div class="alert alert-danger text-center">
+            {{ session('error') }}
         </div>
     @endif
     <div class="container">
@@ -51,12 +55,11 @@
                                 <td>
                                     <a type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-1" href="{{ route('admin.users.show', ['id' => $user->id]) }}"><i class="bi bi-eye-fill"></i></a>
                                     <a type="button" class="btn btn-outline-warning btn-circle btn-lg btn-circle ml-1" href="{{ route('admin.users.edit', ['id' => $user->id]) }}"><i class="bi bi-pencil-fill"></i></a>
-                                    <form action="{{ route('admin.users.destroy', ['id' => $user->id]) }}" method="post" >
-                                            @csrf
-                                            @method('DELETE')
-                                        <button type="submit" onclick="return alert('{{__('app.confirmation')}}')" class="btn btn-danger btn-circle btn-lg btn-circle ml-1" ><i class="bi-x-octagon-fill"></i></button>
-                                    </form>
-{{--                                    <a type="button" class="btn btn-danger btn-circle btn-lg btn-circle ml-2" href="{{ route('admin.users.destroy', ['id' => $user->id]) }}" onclick="return alert('{{__('app.confirmation')}}')"><i class="bi-x-octagon-fill"></i> </a>--}}
+{{--                                    <form action="{{ route('admin.users.destroy', ['id' => $user->id]) }}" method="post" >--}}
+{{--                                            @csrf--}}
+{{--                                            @method('DELETE')--}}
+{{--                                        <button type="submit" onclick="return alert('{{__('app.confirmation')}}')" class="btn btn-danger btn-circle btn-lg btn-circle ml-1" ><i class="bi-x-octagon-fill"></i></button>--}}
+{{--                                    </form>--}}
                                 </td>
                                 </tr>
                               @endforeach

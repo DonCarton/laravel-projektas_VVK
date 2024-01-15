@@ -46,11 +46,11 @@ class User extends Authenticatable
     ];
     public function roles(): BelongsToMany
     {
-        return $this->belongsToMany(Role::class, 'users_roles', 'userID', 'roleID');
+        return $this->belongsToMany(Role::class, 'users_roles', 'userID', 'roleID')->withTimestamps();
     }
     public function conferences(): BelongsToMany
     {
-        return $this->belongsToMany(Conference::class, 'users_conferences', 'userID', 'conferenceID');
+        return $this->belongsToMany(Conference::class, 'users_conferences', 'userID', 'conferenceID')->withTimestamps();
     }
 
     public function firstOrCreate(array $user)
