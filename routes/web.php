@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminConferenceController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\TutorialController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,8 @@ app()->setLocale('lt');
 
 Route::get('/', function (){ return view('home.index'); })->name('dashboard');
 //Route::get('/', function (){ return view('welcome'); })->name('dashboard');
+
+Route::get('/posts', [TutorialController::class,'index'])->name('posts.index');
 
 
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login.form');
